@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 21:14:34
- * @LastEditTime: 2020-11-28 22:05:15
+ * @LastEditTime: 2020-11-28 20:12:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/login.vue
@@ -11,23 +11,35 @@
     <div class="top">
            <div class="logo"></div>
           <div class="box">
-              <p class="enroll">登录</p>
-              <div class="input-block">
-                <p>用户名{{input}}</p>
-                <div class="input">
-                  <el-input v-model="input" placeholder="username"></el-input>  
-                </div>
-                <p>密码</p>
-                <div class="password">
-                  <el-input v-model="password" show-password placeholder="passwrod"></el-input> 
-                </div> 
+              <p class="enroll">注册</p>
+              <div class="box-inline">
+                <div class="input-block">
+                    <p>昵称</p>
+                    <div class="input">
+                    <el-input v-model="input" placeholder="username"></el-input>  
+                    </div>
+                    <p>密码</p>
+                    <div class="password">
+                    <el-input v-model="password" show-password placeholder="passwrod"></el-input> 
+                    </div> 
+                </div>    
+                <div class="input-block">
+                    <p>邮箱</p>
+                    <div class="input">
+                    <el-input v-model="input" placeholder="username"></el-input>  
+                    </div>
+                    <p>确认密码</p>
+                    <div class="password">
+                    <el-input v-model="password" show-password placeholder="passwrod"></el-input> 
+                    </div> 
+                </div>               
               </div>
-              <div class="login-button" @click="login">登录</div>
+              <div class="login-button" @click="register">注册</div>
           </div> 
     </div>
 
       <div class="font-ctx">
-        <p>还没有账号？<a class="link" @click="register">马上注册 👉</a> </p>
+        <p>已经有账号了？<a class="link" @click="login">马上登录 👉</a> </p>
         <p>Copyright © 2020 kying-star</p>
         <p>Powered by <a class="link">kying-star</a> Theme by <a class="link">ElementUI</a></p>
       </div>
@@ -50,10 +62,10 @@ export default {
   methods:{
     login(){
       //register(this.input,this.password)
-      this.$router.push('/index')
+      this.$router.push('/')
     },
     register(){
-      this.$router.push('/register')
+      this.$router.push('/')
     }
   }
 }
@@ -73,6 +85,9 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+    .box-inline{
+        display: flex;
     }
     .font-ctx{
       width: 30vw;
@@ -102,7 +117,7 @@ export default {
     }
     .box{
         background-color: #FFFFFF;
-        width: 25vw;
+        width: 50vw;
         min-width: 200px;
         height: 40vh;
         border-top: 2px solid #03DAC5;
@@ -115,10 +130,12 @@ export default {
         .input-block{
           display: flex;
           flex-direction: column;
+          align-items: center;
+          margin: 1vw;
         }
         .login-button{
           margin-bottom: 30px;
-          width: 20vw;
+          width: 42vw;
           height: 50px;
           border-radius: 5px;
           background-color: #08ecd6;
@@ -133,7 +150,7 @@ export default {
           }
         }
         .enroll{
-            width: 20vw;
+            width: 42vw;
             text-align: left;
             color: #03DAC5;
             font-size: 24px;

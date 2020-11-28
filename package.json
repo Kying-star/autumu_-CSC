@@ -13,7 +13,9 @@
     "element-ui": "^2.14.1",
     "normalize.css": "^8.0.1",
     "postcss-px-to-viewport": "^1.1.1",
+    "swiper": "^6.3.5",
     "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^3.2.0",
     "vue-router": "^3.4.9"
   },
