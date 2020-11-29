@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 15:01:49
- * @LastEditTime: 2020-11-29 15:31:16
+ * @LastEditTime: 2020-11-29 16:12:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/index.vue
@@ -43,14 +43,11 @@
           <div class="name">kying-star</div>
         </div>
         <div class="title">
-          首页
+          个人
         </div>
       </div>
       <div class="content">
-        <div class="search">
-          <input type="text" placeholder="输入tag以准确查找">
-          <div class="search-icon"></div>
-        </div>
+        <p class="txt">我的关注</p>
         <div class="tags">
           <el-tag
             :key="tag"
@@ -74,30 +71,8 @@
           </el-input>
           <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
         </div>
-        <div class="time">
-          <p>日期&时间</p>
-          <div class="time-select">
-            <div class="block">
-              <el-date-picker
-                v-model="value2"
-                align="right"
-                type="date"
-                placeholder="选择日期"
-                :picker-options="pickerOptions">
-              </el-date-picker>
-            </div>
-              <el-time-picker
-                is-range
-                v-model="start"
-                range-separator="至"
-                start-placeholder="开始时间"
-                end-placeholder="结束时间"
-                placeholder="选择时间范围">
-              </el-time-picker>
-          </div>
-        </div>
         <div class="lost-cxt">
-          <p>搜索结果--失物招领</p>
+          <p class="txt">相关结果</p>
           <div class="lost-list">
             <div class="cards" v-for="itme in list" :key="itme.id">
                 <el-card :body-style="{ padding: '0px' }">
@@ -211,6 +186,12 @@
 </script>
 
 <style lang="scss">
+.txt{
+  width: 1080px;
+  text-align: left;
+  font-weight: 600;
+  margin-left: 20px;
+}
 .el-tag + .el-tag {
     margin-left: 10px;
   }

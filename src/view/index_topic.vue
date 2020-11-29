@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 15:01:49
- * @LastEditTime: 2020-11-29 15:31:16
+ * @LastEditTime: 2020-11-29 15:34:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/index.vue
@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="lost-cxt">
-          <p>搜索结果--失物招领</p>
+          <p>搜索结果--寻物启示</p>
           <div class="lost-list">
             <div class="cards" v-for="itme in list" :key="itme.id">
                 <el-card :body-style="{ padding: '0px' }">

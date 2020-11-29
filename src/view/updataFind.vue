@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 15:01:49
- * @LastEditTime: 2020-11-29 15:31:16
+ * @LastEditTime: 2020-11-29 15:35:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/index.vue
@@ -43,7 +43,7 @@
           <div class="name">kying-star</div>
         </div>
         <div class="title">
-          首页
+          发帖
         </div>
       </div>
       <div class="content">
