@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-21 15:32:46
- * @LastEditTime: 2020-11-29 20:11:36
+ * @LastEditTime: 2020-11-30 17:07:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /clean-plant/src/store/index.js
@@ -25,8 +25,12 @@ export default new vuex.Store({
         num: 0,
         image: [],
         imageId: [],
+        lostList: [1, 2, 3, 4]
     },
     mutations: {
+        changeList(state, itme) {
+            state.lostList.push(itme)
+        },
         [SET_IMAGE_UPLOADING](state) {
             state.isUploading = true;
         },

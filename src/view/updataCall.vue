@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 15:01:49
- * @LastEditTime: 2020-11-30 00:19:39
+ * @LastEditTime: 2020-11-30 17:29:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/index.vue
@@ -61,7 +61,7 @@
         <div></div>
         <div class="self">
           <div class="self-photo"></div>
-          <div class="name">kying-star</div>
+          <div class="name">{{username}}</div>
         </div>
         <div class="title">
           发帖
@@ -75,11 +75,19 @@
             <question-edit-photo class="push-img"></question-edit-photo>
             <p>添加文字</p>
             <div class="input-block">
-              <input type="text" class="list-input" placeholder="请输入你对失物的描述">
+              <input
+                type="text"
+                class="list-input"
+                placeholder="请输入你对失物的描述"
+                v-model="text"
+              >
               <div class="list-hr"></div>
             </div>
             <div class="updata-block">
-              <div class="updata-button" @click="open2">
+              <div
+                class="updata-button"
+                @click="open2"
+              >
                 上传帖子
               </div>
             </div>
@@ -99,10 +107,21 @@ export default {
   },
   data() {
     return {
-      list: ["一卡通", "水壶", "雨伞", "一卡通", "水壶", "雨伞"],
+      text: "",
+      username: "",
+      list: [
+        { tag: "一卡通", time: "11月30日", detail: "在二教捡到的" },
+        { tag: "雨伞", time: "11月30日", detail: "在二教捡到的" },
+        { tag: "水杯", time: "11月30日", detail: "在二教捡到的" },
+        { tag: "一卡通", time: "11月30日", detail: "在二教捡到的" },
+        { tag: "雨伞", time: "11月30日", detail: "在二教捡到的" },
+        { tag: "水杯", time: "11月30日", detail: "在二教捡到的" },
+        { tag: "一卡通", time: "11月30日", detail: "在二教捡到的" },
+      ],
+      showList: [],
       currentDate: new Date(),
       activeNames: ["1"],
-      dynamicTags: ["一卡通", "雨伞", "水壶"],
+      dynamicTags: ["一卡通", "雨伞", "水杯"],
       inputVisible: false,
       inputValue: "",
       pickerOptions: {
@@ -142,11 +161,14 @@ export default {
   },
   methods: {
     open2() {
-        this.$message({
-          message: '上传成功',
-          type: 'success'
-        })
-      },
+      this.$message({
+        message: "上传成功",
+        type: "success",
+      });
+      this.$store.state.image = [];
+      this.$store.state.imageId = [];
+      this.text = "";
+    },
     handleChange(val) {
       console.log(val);
     },
@@ -201,8 +223,13 @@ export default {
 </script>
 
 <style lang="scss">
-.push-img{
+.push-img {
   margin-left: 30px;
+}
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .el-tag + .el-tag {
   margin-left: 10px;
@@ -303,7 +330,7 @@ export default {
         margin: 5px;
         margin-right: 10px;
         border-radius: 50%;
-        background-image: url("../assets/image/index/self-photo.jpg");
+        background-image: url("../assets/image/logo.png");
         background-size: cover;
       }
       .name {
@@ -409,27 +436,27 @@ export default {
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
-          .input-block{
+          .input-block {
             display: flex;
             flex-direction: column;
             align-items: center;
           }
-          .list-input{
+          .list-input {
             width: 1050px;
             height: 50px;
             padding-left: 10px;
             border: 0;
             outline-style: none;
-          }            
-          .list-hr{
+          }
+          .list-hr {
             width: 1050px;
             height: 3px;
-            background-color:black;
+            background-color: black;
           }
-          .updata-block{
+          .updata-block {
             width: 1100px;
             display: flex;
-            .updata-button{
+            .updata-button {
               margin-top: 20px;
               margin-left: 20px;
               border-radius: 10px;
@@ -438,12 +465,12 @@ export default {
               line-height: 50px;
               font-weight: 600;
               background-color: #08ecd6;
-              transition: .5s linear all;
+              transition: 0.5s linear all;
               cursor: pointer;
-              &:hover{
-                background-color: #03DAC5;
+              &:hover {
+                background-color: #03dac5;
                 color: #ffffff;
-              }    
+              }
             }
           }
         }

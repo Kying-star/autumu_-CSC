@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 21:14:34
- * @LastEditTime: 2020-11-28 20:12:35
+ * @LastEditTime: 2020-11-30 16:29:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/login.vue
@@ -26,11 +26,11 @@
                 <div class="input-block">
                     <p>邮箱</p>
                     <div class="input">
-                    <el-input v-model="input" placeholder="username"></el-input>  
+                    <el-input v-model="email" placeholder="username"></el-input>  
                     </div>
                     <p>确认密码</p>
                     <div class="password">
-                    <el-input v-model="password" show-password placeholder="passwrod"></el-input> 
+                    <el-input v-model="password_again" show-password placeholder="passwrod"></el-input> 
                     </div> 
                 </div>               
               </div>
@@ -53,6 +53,8 @@ export default {
     return {
       input: '',
       password: '',
+      password_again:'',
+      email:''
     }
   },
   created(){
@@ -65,7 +67,37 @@ export default {
       this.$router.push('/')
     },
     register(){
-      this.$router.push('/')
+      let reg = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/
+      if(!this.email&&!this.password&&!this.password_again&&!this.input){
+        this.$message({
+          message: '输入为空',
+          type: 'warning'
+        })
+      }
+      else if(!reg.test(this.email)){
+        this.$message({
+          message: '请输入正确的邮箱格式',
+          type: 'warning'
+        });
+      }
+      else if(this.password!=this.password_again){
+        this.$message({
+          message: '两次输入的密码不一致',
+          type: 'warning'
+        });
+      }
+      else{
+        this.$message({
+          message: '注册成功',
+          type: 'success'
+        })
+        localStorage.setItem('username',this.input)
+        localStorage.setItem('password',this.password)
+        setTimeout(()=>{
+          this.$router.push('/')
+        },600)
+        
+      }
     }
   }
 }
