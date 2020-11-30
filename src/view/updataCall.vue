@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 15:01:49
- * @LastEditTime: 2020-11-29 17:52:44
+ * @LastEditTime: 2020-11-30 00:19:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /app/src/view/index.vue
@@ -72,6 +72,17 @@
           <p>失物帖</p>
           <div class="lost-list">
             <p>上传图片</p>
+            <question-edit-photo class="push-img"></question-edit-photo>
+            <p>添加文字</p>
+            <div class="input-block">
+              <input type="text" class="list-input" placeholder="请输入你对失物的描述">
+              <div class="list-hr"></div>
+            </div>
+            <div class="updata-block">
+              <div class="updata-button" @click="open2">
+                上传帖子
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -80,7 +91,12 @@
 </template>
 
 <script>
+import QuestionEditPhoto from "../components/EditImage";
+// import { postPushCard } from "../server";
 export default {
+  components: {
+    QuestionEditPhoto,
+  },
   data() {
     return {
       list: ["一卡通", "水壶", "雨伞", "一卡通", "水壶", "雨伞"],
@@ -125,6 +141,12 @@ export default {
     };
   },
   methods: {
+    open2() {
+        this.$message({
+          message: '上传成功',
+          type: 'success'
+        })
+      },
     handleChange(val) {
       console.log(val);
     },
@@ -172,10 +194,16 @@ export default {
       this.$router.push("/updataCall");
     },
   },
+  created() {
+    console.log(this.$store.state.index);
+  },
 };
 </script>
 
 <style lang="scss">
+.push-img{
+  margin-left: 30px;
+}
 .el-tag + .el-tag {
   margin-left: 10px;
 }
@@ -204,7 +232,7 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     background-color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px;
     .home {
       width: 30px;
       height: 30px;
@@ -379,12 +407,44 @@ export default {
           box-shadow: rgba(0, 0, 0, 0.2) 0 1px 5px 0px;
           background-color: #ffffff;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           flex-wrap: wrap;
-          .cards {
-            margin: 30px;
-            width: 300px;
-            height: 400px;
+          .input-block{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .list-input{
+            width: 1050px;
+            height: 50px;
+            padding-left: 10px;
+            border: 0;
+            outline-style: none;
+          }            
+          .list-hr{
+            width: 1050px;
+            height: 3px;
+            background-color:black;
+          }
+          .updata-block{
+            width: 1100px;
+            display: flex;
+            .updata-button{
+              margin-top: 20px;
+              margin-left: 20px;
+              border-radius: 10px;
+              width: 200px;
+              height: 50px;
+              line-height: 50px;
+              font-weight: 600;
+              background-color: #08ecd6;
+              transition: .5s linear all;
+              cursor: pointer;
+              &:hover{
+                background-color: #03DAC5;
+                color: #ffffff;
+              }    
+            }
           }
         }
       }

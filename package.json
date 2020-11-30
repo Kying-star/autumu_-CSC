@@ -11,6 +11,7 @@
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
+    "exif-js": "^2.3.0",
     "normalize.css": "^8.0.1",
     "postcss-px-to-viewport": "^1.1.1",
     "swiper": "^6.3.5",
